@@ -1,0 +1,76 @@
+# Two remotes from one source, each for Bluetooth and USB:
+#   Media Combo: Movie, Mouse
+#   Keys Combo:  Mouse, Keynote, Keyboard, Numpad
+App(
+    appid="media_combo_ble",
+    name="Media Combo",
+    apptype=FlipperAppType.EXTERNAL,
+    entry_point="hid_ble_app",
+    stack_size=2 * 1024,
+    sources=["*.c", "!transport_usb.c"],
+    cdefines=["HID_TRANSPORT_BLE", "HID_APP_MEDIA"],
+    fap_libs=["ble_profile"],
+    fap_description="Bluetooth remote: Movie and Mouse, double tap Back to switch",
+    fap_version="2.0",
+    fap_author="compact161",
+    fap_weburl="https://github.com/compact161/flipper-media-keys-combo",
+    fap_category="Bluetooth",
+    fap_icon="hid_ble_10px.png",
+    fap_icon_assets="assets",
+    fap_icon_assets_symbol="hid",
+)
+
+App(
+    appid="media_combo_usb",
+    name="Media Combo",
+    apptype=FlipperAppType.EXTERNAL,
+    entry_point="hid_usb_app",
+    stack_size=2 * 1024,
+    sources=["*.c", "!transport_ble.c"],
+    cdefines=["HID_TRANSPORT_USB", "HID_APP_MEDIA"],
+    fap_description="USB remote: Movie and Mouse, double tap Back to switch",
+    fap_version="2.0",
+    fap_author="compact161",
+    fap_weburl="https://github.com/compact161/flipper-media-keys-combo",
+    fap_category="USB",
+    fap_icon="hid_usb_10px.png",
+    fap_icon_assets="assets",
+    fap_icon_assets_symbol="hid",
+)
+
+App(
+    appid="keys_combo_ble",
+    name="Keys Combo",
+    apptype=FlipperAppType.EXTERNAL,
+    entry_point="hid_ble_app",
+    stack_size=2 * 1024,
+    sources=["*.c", "!transport_usb.c"],
+    cdefines=["HID_TRANSPORT_BLE", "HID_APP_KEYS"],
+    fap_libs=["ble_profile"],
+    fap_description="Bluetooth remote: Mouse, Keynote, Keyboard and Numpad, double tap Back to switch",
+    fap_version="2.0",
+    fap_author="compact161",
+    fap_weburl="https://github.com/compact161/flipper-media-keys-combo",
+    fap_category="Bluetooth",
+    fap_icon="hid_ble_10px.png",
+    fap_icon_assets="assets",
+    fap_icon_assets_symbol="hid",
+)
+
+App(
+    appid="keys_combo_usb",
+    name="Keys Combo",
+    apptype=FlipperAppType.EXTERNAL,
+    entry_point="hid_usb_app",
+    stack_size=2 * 1024,
+    sources=["*.c", "!transport_ble.c"],
+    cdefines=["HID_TRANSPORT_USB", "HID_APP_KEYS"],
+    fap_description="USB remote: Mouse, Keynote, Keyboard and Numpad, double tap Back to switch",
+    fap_version="2.0",
+    fap_author="compact161",
+    fap_weburl="https://github.com/compact161/flipper-media-keys-combo",
+    fap_category="USB",
+    fap_icon="hid_usb_10px.png",
+    fap_icon_assets="assets",
+    fap_icon_assets_symbol="hid",
+)

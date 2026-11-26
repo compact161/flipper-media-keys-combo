@@ -1,0 +1,17 @@
+# Shared pre-commit config (copied from the coding guidelines templates).
+# Copy to .pre-commit-config.yaml, delete the hooks for languages this repo does not use,
+# then: pre-commit install
+# All hooks are "local": they use the tools installed on the machine (no downloads).
+repos:
+  - repo: local
+    hooks:
+      - id: gitleaks
+        name: gitleaks (secrets)
+        entry: gitleaks git --pre-commit --staged --redact --no-banner .
+        language: system
+        pass_filenames: false
+      - id: clang-format
+        name: clang-format
+        entry: clang-format -i --style=file --fallback-style=none   # no .clang-format = no formatting
+        language: system
+        types_or: [c, c++]
